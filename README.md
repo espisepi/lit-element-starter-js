@@ -4,9 +4,19 @@
 2 - Configurar y Realizar build con Rollup: https://lit.dev/docs/tools/production/
 3 - Probar el web component en una plantilla de shopify liquid (por ejemplo)
 
+=== NO SE PUEDE =========
 4 - Crear nuevo componente web: my-element-sepinaco.js
 5 - Crear nuevo html para mostrar mi componente web: ./dev/index-my-element-sepinaco.html
 6 - Referenciar el anterior html creado (index-my-element-sepinaco.html) en: index.html
+=== FIN NO SE PUEDE =========
+
+4 - Crear nueva rama partiendo de la rama sepinaco-lit-element
+5 - Modificar my-element.js y los demás ficheros creando desde ahí el nuevo componente web
+6 - Realizar build con rollup en mi nueva rama y tendremos la build del nuevo componente
+
+================================================================================================
+RESUMEN: Una rama por cada componente web y todas parten desde la rama base sepinaco-lit-element
+================================================================================================
 
 # LitElement JavaScript starter
 
