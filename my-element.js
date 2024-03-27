@@ -5,6 +5,9 @@
  */
 
 import {LitElement, html, css} from 'lit';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
 
 /**
  * An example element.
@@ -18,10 +21,11 @@ export class MyElement extends LitElement {
     return css`
       :host {
         display: block;
-        border: solid 1px gray;
-        padding: 16px;
-        max-width: 800px;
       }
+      canvas {
+      width: 100%;
+      height: 100%;
+    }
     `;
   }
 
@@ -54,23 +58,60 @@ export class MyElement extends LitElement {
     this.items = [];
   }
 
+    /**
+   * Initializes the renderer and starts the animation loop.
+   *
+   * One-time call, which happens after the Shadow DOM was first
+   * rendered by Lit-Element. Ensures the ‹canvas› element is available.
+   */
+    firstUpdated() {
+      console.log( "three-app › firstUpdated()");
+  
+      // Initializes the WebGL renderer and links it to our ‹canvas› element
+      // this.init();
+  
+      // Start the animation loop and timer
+      // this.start();
+
+      const canvas = this.renderRoot.querySelector('canvas');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000); // Fondo negro
+    
+    const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+    
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    
+    const controls = new OrbitControls(camera, renderer.domElement); // Inicializa OrbitControls
+    // Habilitar amortiguación (suavidad) y configurar el factor de amortiguación
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    
+    const ambientLight = new THREE.AmbientLight(0xffffff); // Luz ambiental blanca
+    scene.add(ambientLight);
+    
+    const geometry = new THREE.BoxGeometry();
+    const material = this.items.map((item) => new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load(item.src), side: THREE.DoubleSide }));
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    camera.position.z = 5;
+
+    controls.update(); // Para que OrbitControls actualice su posición inicial
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+      controls.update(); // Habilita la actualización de la posición de la cámara con los controles
+      renderer.render(scene, camera);
+    };
+
+    animate();
+    }
+
   render() {
     return html`
-      <h1>${this.sayHello(this.name)}!</h1>
-      <button @click=${this._onClick} part="button">
-        Click Count: ${this.count}
-      </button>
-      <slot></slot>
-      <div class="carousel-container">
-        ${this.name}
-        ${this.items?.map(
-          item => html`
-            <div class="carousel-item">
-              <img src="${item.src}" alt="${item.alt}" />
-            </div>
-          `
-        )}
-      </div>
+      <h1>HOLA THREEJS</h1>
+      <canvas></canvas>
     `;
   }
 
