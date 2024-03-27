@@ -1,3 +1,9 @@
+# Pasos a seguir
+
+1 - Empezar con el template oficial de lit javascript starter
+2 - Configurar y Realizar build con Rollup: https://lit.dev/docs/tools/production/
+3 - Probar el web component en una plantilla de shopify liquid (por ejemplo)
+
 # LitElement JavaScript starter
 
 This project includes a sample component using LitElement with JavaScript.
