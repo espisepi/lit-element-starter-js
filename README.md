@@ -4,6 +4,10 @@
 2 - Configurar y Realizar build con Rollup: https://lit.dev/docs/tools/production/
 3 - Probar el web component en una plantilla de shopify liquid (por ejemplo)
 
+4 - Crear nuevo componente web: my-element-sepinaco.js
+5 - Crear nuevo html para mostrar mi componente web: ./dev/index-my-element-sepinaco.html
+6 - Referenciar el anterior html creado (index-my-element-sepinaco.html) en: index.html
+
 # LitElement JavaScript starter
 
 This project includes a sample component using LitElement with JavaScript.
