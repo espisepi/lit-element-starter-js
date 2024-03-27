@@ -38,6 +38,12 @@ export class MyElement extends LitElement {
        * @type {number}
        */
       count: {type: Number},
+
+       /**
+       * The images array
+       * @type {Array}
+       */
+      items: {type: Array},
     };
   }
 
@@ -45,6 +51,7 @@ export class MyElement extends LitElement {
     super();
     this.name = 'World';
     this.count = 0;
+    this.items = [];
   }
 
   render() {
@@ -54,6 +61,16 @@ export class MyElement extends LitElement {
         Click Count: ${this.count}
       </button>
       <slot></slot>
+      <div class="carousel-container">
+        ${this.name}
+        ${this.items?.map(
+          item => html`
+            <div class="carousel-item">
+              <img src="${item.src}" alt="${item.alt}" />
+            </div>
+          `
+        )}
+      </div>
     `;
   }
 
