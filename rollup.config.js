@@ -13,7 +13,7 @@ export default {
   input: 'my-element.js',
   output: {
     file: 'my-element.bundled.js',
-    format: 'esm',
+    format: 'iife', // esm, iife, umd
   },
   onwarn(warning) {
     if (warning.code !== 'THIS_IS_UNDEFINED') {
