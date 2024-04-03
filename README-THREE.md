@@ -1,3 +1,9 @@
+
+El siguiente paso es añadir una url modelo glb por parámetro (en shopify se pueden subir modelos 3d)
+y mostrarlo con orbitcontrols tal y como se muestra en el codigo de abajo:
+
+=====================
+
 ahora cárgame un modelo gltf 
 
 Para cargar un modelo GLTF en tu escena de Three.js utilizando el componente Lit que hemos estado desarrollando, necesitarás usar el `GLTFLoader` de Three.js. El `GLTFLoader` no se incluye por defecto en el build principal de Three.js, así que tendrás que importarlo desde 'three/examples/jsm/loaders/GLTFLoader.js', similar a cómo hiciste con `OrbitControls`.
